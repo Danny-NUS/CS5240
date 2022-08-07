@@ -1,0 +1,188 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\usepackage{amsfonts}
+\usepackage{amssymb,amsthm,amsmath}
+\usepackage[shortlabels]{enumitem}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{bbm}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+\title{Answers for Problem 0}
+\author{Junchuan Zhao}
+
+\begin{document}
+\setstretch{1.2} 
+\maketitle
+
+\section{Exercise 1}
+(a) A(B+C) = AB + AC\\
+The $(i,j)$-th element of the left hand side is:\\
+\begin{equation}
+    \begin{aligned}
+        [A(B+C)]_{ij} & = \sum\limits_{k}[A]_{ik}[B+C]_{kj}\\
+        & = \sum\limits_{k}[A]_{ik}[B]_{kj} + [A]_{ik}[C]_{kj}\\
+        & = [AB]_{ij} + [AC]_{ij}\\
+        & = [AB + AC]_{ij}
+    \end{aligned}
+    \label{f1}
+\end{equation}
+Hence, A(B+C) = AB + AC\\
+
+\noindent
+(b) (AB)C = A(BC) AB $\neq$ BA\\
+The $(i,j)$-th element of the left hand side is:\\
+\begin{equation}
+    \begin{aligned}
+        [(AB)C]_{ij} & = \sum\limits_k[AB]_{ik}[C]_{kj}\\
+        & = \sum\limits_k\sum\limits_m[A]_{im}[B]_{mk}[C]_{kj}\\
+        & = \sum\limits_m[A]_{im}\sum\limits_k[B]_{mk}[C]_{kj}\\
+        & = \sum\limits_m[A]_{im}[BC]_{mj} = [A(BC)]_{ij}
+    \end{aligned}
+    \label{f2}
+\end{equation}
+Hence, (AB)C = A(BC)\\
+
+\noindent
+(c) (A+B)$^T$ = A$^T$ + B$^T$\\
+The $(i,j)$-th element of the left hand side is:\\
+\begin{equation}
+    \begin{aligned}
+        [(A+B)^T]_{ij} & = [A+B]_{ji}\\
+        & = [A]_{ji} + [B]_{ji}\\
+        & = [A^T]_{ij} + [B^T]_{ij}\\
+        & = [A^T + B^T]_{ij}
+    \end{aligned}
+\end{equation}    
+Hence, (A+B)$^T$ = A$^T$ + B$^T$\\
+
+\noindent
+(d) (AB)$^T$ = B$^T$A$^T$\\
+The $(i,j)$-th element of the left hand side is:\\
+\begin{equation}
+    \begin{aligned}
+        [(AB)^T]_{ij} & = [AB]_{ji}\\
+        & = \sum\limits_{k}[A]_{jk}[B]_{ki}\\
+        & = \sum\limits_{k}[B^T]_{ik}[A^T]_{kj}\\
+        & = [B^TA^T]_{ij}
+    \end{aligned}
+\end{equation}  
+Hence, (AB)$^T$ = B$^T$A$^T$
+
+\section{Exercise 2}
+(a) show that the sum of the diagonal elements of the outer product xx$^T$ is equal to ${\Vert x \Vert}^2$\\
+The sum of the diagonal elements of the outer product is:\\
+\begin{equation}
+    \begin{aligned}
+        \sum\limits_{i=1}^m [xx^T]_{ii} & = \sum\limits_{i=1}^m [x]_{i1}[x]_{i1}\\
+        & = \sum\limits_{i=1}^m [x]_{i}^2\\
+        & = {\Vert x \Vert}^2
+    \end{aligned}
+\end{equation} 
+
+\noindent
+(b) AA$^T$ = nR\\
+The $(i,j)$-th element of AA$^T$ is:\\
+\begin{equation}
+    \begin{aligned}
+        [AA^T]_{ij} & = \sum\limits_{k=1}^n [A]_{ik} [A^T]_{kj}\\
+        & = \sum\limits_{k=1}^n [A]_{ik} [A]_{jk}\\
+        & = \sum\limits_{k=1}^n [A]_{ik} [A]_{jk}\\
+    \end{aligned}
+\end{equation} 
+The $(i,j)$-th element of R is:\\
+\begin{equation}
+    \begin{aligned}
+        [R]_{ij} & = \frac{1}{n}\sum\limits_{k=1}^n [x_k]_{i} [x_k]_{j}\\
+        & = \frac{1}{n}\sum\limits_{k=1}^n [A]_{ik} [A]_{jk}\\
+    \end{aligned}
+\end{equation}
+\noindent
+Since, $$[AA^T]_{ij} = n[R]_{ij}$$
+Hence, AA$^T$ = nR\\
+
+\noindent
+(c) BB$^T$ = nC\\
+The $(i,j)$-th element of BB$^T$ is:\\
+\begin{equation}
+    \begin{aligned}
+        [BB^T]_{ij} & = \sum\limits_{k=1}^n [B]_{ik} [B^T]_{kj}\\
+        & = \sum\limits_{k=1}^n [B]_{ik} [B]_{jk}\\
+        & = \sum\limits_{k=1}^n [B]_{ik} [B]_{jk}\\
+    \end{aligned}
+\end{equation}
+The $(i,j)$-th element of C is:\\
+\begin{equation}
+    \begin{aligned}
+        [C]_{ij} & = \frac{1}{n}\sum\limits_{k=1}^n [x_k-\mu]_{i} [x_k-\mu]_{j}\\
+        & = \frac{1}{n}\sum\limits_{k=1}^n [B]_{ik} [B]_{jk}\\
+    \end{aligned}
+\end{equation}
+Hence, BB$^T$ = nC\\
+
+\noindent
+(d) C = R - $\mu\mu^T$\\
+The $(i,j)$-th element of C is:\\
+\begin{equation}
+    \begin{aligned}
+        [C]_{ij} & = \frac{1}{n}\sum\limits_{k=1}^n [x_k-\mu]_{i} [x_k-\mu]_{j}\\
+        & = \frac{1}{n}\sum\limits_{k=1}^n ([x_k]_i[x_k]_j + [\mu]_i[\mu]_j - [x_k]_i[\mu]_j - [x_k]_j[\mu]_i)\\
+        & = \frac{1}{n}\sum\limits_{k=1}^n [x_k]_i[x_k]_j + [\mu]_i[\mu]_j - \frac{1}{n}\sum\limits_{k=1}^n ([x_k]_i[\mu]_j + [x_k]_j[\mu]_i)\\
+        & = \frac{1}{n}\sum\limits_{k=1}^n [x_k]_i[x_k]_j + [\mu]_i[\mu]_j - 2 [\mu]_i[\mu]_j\\
+        & = \frac{1}{n}\sum\limits_{k=1}^n [x_k]_i[x_k]_j - [\mu]_i[\mu]_j\\
+    \end{aligned}
+\end{equation}
+The $(i,j)$-th element of R is:\\
+\begin{equation}
+    \begin{aligned}
+        [R]_{ij} = \frac{1}{n}\sum\limits_{k=1}^n [x_k]_i[x_k]_j\\
+    \end{aligned}
+\end{equation}
+The $(i,j)$-th element of R - $\mu\mu^T$ is:\\
+\begin{equation}
+    \begin{aligned}
+        [R - \mu\mu^T]_{ij} = \frac{1}{n}\sum\limits_{k=1}^n [x_k]_i[x_k]_j - [\mu]_i[\mu]_j\\
+    \end{aligned}
+\end{equation}
+Hence, C = R - $\mu\mu^T$\\
+
+\noindent
+(e) x$^T$Wx = $\sum\limits_{j=1}^m w_j{x_j}^2$\\
+The $k$-th element of Wx is:\\
+\begin{equation}
+    \begin{aligned}
+        [Wx]_{k} & = \sum\limits_{i} [W]_{ki}[x]_{i}\\
+        & {\rm when\ i = k}, [W]_{ik} = w_k\\
+        & = w_kx_k
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        x^TWx & = \sum\limits_{k} [x^T]_{1k}[Wx]_{k1}\\
+        & = \sum\limits_{k} [x]_{k}[Wx]_{k}\\
+        & = \sum\limits_{k} [x]_{k}\cdot[w]_{k}[x]_{k}\\
+        & = \sum\limits_{k=1}^m [w]_{k}{[x]_{k}}^2\\
+    \end{aligned}
+\end{equation}
+Hence, $x^TWx = {\Vert W^{1/2}x \Vert}^2 = \sum\limits_{j=1}^mw_j{x_j}^2$ 
+\end{document}
